@@ -2,9 +2,7 @@
   <div class="game">
      <div class="container-fluid">
         <div class="row">
-            <div class="col"> 
-                <img alt="pepparkakshus" src="../assets/pepparkakshus.jpg">
-            </div>
+    
             <div class="col">   
                 <Game />
                 <button @click="logout">Logga ut</button>
@@ -45,5 +43,13 @@ button{
 }
 .col {
     
+}
+    button{
+  margin: 25px;
+  color: white;
+  background-color: grey;
+  padding: 5px 10px;
+  border-radius: 5px;
+  
 }
 </style>

@@ -7,26 +7,28 @@
           <p>We have selected a random number between 1 and 100. See if you can guess it in 10 turns or fewer. We'll tell you if your guess was too high or too low.</p>
         </div>
             <div class="col">
-               <button @click="startGame" v-on:click="game = !game">Start Game</button><br><br>
-                <div v-show="game">
+               <div v-show="game">
                 <input v-model="userGuess" type="number" @keypress.enter = "userInput" :disabled="inputClosed"/>
                 <button @click="userInput" :disabled="inputBtnClosed">Guess</button>
                 <p>Grinchen: {{opponent}}</p>
                 <p>Krampus: {{opponent2}}</p>
-                <br>
-                </div>
-            </div>
-            <div class="col">
+                   <div class="col">
                 <p>You have used {{numberOfGuess}} of 10 Guesses.</p>
                 <div class="history" v-for="histor in history" :key="histor">{{ histor }}</div>
                 <div id="watch-example">
-                  <p></p>
+                
                   <p>{{ answer }}</p>
                 </div>
+                </div>
+                
+ 
+            
             </div>
+               <button @click="startGame" v-on:click="game = !game">Start Game</button><br><br>
             <router-link :to="{name:'home',params}"><button>Home page</button></router-link>
         </div>
     </div> 
+  </div>
   </div>
 </template>
 
@@ -35,7 +37,7 @@ export default {
    data() {
      return{
        question: '',
-    answer: 'May the force be with you!',
+    answer: 'May the jolly-time be with you!',
   opponent: 10,
   opponent2: 10,
   game: false,
@@ -146,5 +148,20 @@ export default {
     .col {
         
     }
+    button{
+  margin: 25px;
+  color: white;
+  background-color: grey;
+  padding: 5px 10px;
+  border-radius: 5px;
+  
+}
+p {
+ color: grey;
+ background-color: white;
+ border-radius: 5px;
+ border: 2px solid black;
+ padding: 5px;
+}
 
 </style>

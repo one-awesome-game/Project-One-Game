@@ -7,9 +7,13 @@
 </template>
 
 <style>
-    body{
-        overflow: scroll;
-    }
+
+   body { 
+
+     overflow: scroll;
+       background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAAAXNSR0IArs4c6QAAAHhJREFUGBlj0C00T2OAAt0C8/+6eebGMP4DMbH/YDZIEUgSJgFSBJNkAgv+Z5jJwMiQDlOwecX9M74RiiYQ3cg6gSbBdIIkQSYxMfxjgKgECmxeen+mb7Qi3CQGJoYzEFOQ7ATrRHIT2A0odoJUILsJ3U4U3wBNAgAnUTCd+9M9SgAAAABJRU5ErkJggg==);
+       }
+    
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -42,4 +46,7 @@
 .fade-enter, .fade-leave-active {
  opacity: 0
 }
+
+
+
 </style>
