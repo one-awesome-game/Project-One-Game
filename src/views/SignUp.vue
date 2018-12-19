@@ -47,7 +47,7 @@ input {
   margin: 0 10%;
   padding: 1%;
   border-radius: 5px;
-  background-color: #cccccc;
+  background: linear-gradient(45deg,#97F7FB,#8D8AFC);;
 }
 p{
     display: inline-block;

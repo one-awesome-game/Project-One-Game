@@ -4,15 +4,18 @@
     <div class="container-fluid">
         <div class="row">
            <div class="col"> 
+          <h1>Higher &amp; Lower</h1><hr>
           <p>We have selected a random number between 1 and 100. See if you can guess it in 10 turns or fewer. We'll tell you if your guess was too high or too low.</p>
         </div>
             <div class="col">
-               <button @click="startGame" v-on:click="game = !game">Start Game</button><br><br>
+               <button class="start-game-button" @click="startGame" v-on:click="game = !game">Start Game</button><br><br>
                 <div v-show="game">
                 <input v-model="userGuess" type="number" @keypress.enter = "userInput" :disabled="inputClosed"/>
-                <button @click="userInput" :disabled="inputBtnClosed">Guess</button>
-                <p>Grinchen: {{opponent}}</p>
-                <p>Krampus: {{opponent2}}</p>
+                <button class="guess-button" @click="userInput" :disabled="inputBtnClosed">Guess</button>
+                <div class="opp">
+                  <p>Grinchen: {{opponent}}</p>
+                  <p>Krampus: {{opponent2}}</p>
+                </div>
                 <br>
                 </div>
             </div>
@@ -24,7 +27,7 @@
                   <p>{{ answer }}</p>
                 </div>
             </div>
-            <router-link :to="{name:'home',params}"><button>Home page</button></router-link>
+            <router-link :to="{name:'home',params}"><button class="button_c">Home page</button></router-link>
         </div>
     </div> 
   </div>
@@ -138,13 +141,77 @@ export default {
 
 <style scoped>
 .history{
-  background-color: peachpuff;
+  background: linear-gradient(45deg,#C3A8EE,#F5C1EA);
   display: inline-block;
   padding: 0.5%;
   border: 1px solid #cccccc;
 }
-    .col {
+.col {
         
-    }
-
+}
+hr {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+.start-game-button{
+  background: linear-gradient(45deg,#6FE594,#27A47C);
+  color:#fff;
+  border:none;
+  position:relative;
+  height:45px;
+  font-size:1.3em;
+  padding:0 2em;
+  cursor:pointer;
+  transition:800ms ease all;
+  outline:none;
+}
+.start-game-button:hover{
+  background:linear-gradient(45deg,#92F1D5,#ABF6BD);
+  color:#1AAB8A;
+}
+.start-game-button:before,button:after{
+  content:'';
+  position:absolute;
+  top:0;
+  right:0;
+  height:2px;
+  width:0;
+  background: #1AAB8A;
+  transition:400ms ease all;
+}
+input {
+  width: 20%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+.guess-button {
+  color:white;
+  background: linear-gradient(45deg,#FD5A49,#FDDC98);
+  height: 40px;
+  width:50px;
+  border-radius: 4px;
+}
+.opp {
+  font-size: 15px;
+  color: grey;
+}
+.button_c {
+  color: #494949 !important;
+  text-transform: uppercase;
+  background: linear-gradient(45deg,#DBFDEC,#FFC2D4);
+  padding: 7px;
+  border: 4px solid linear-gradient(45deg,#FB7140,#FB9951) !important;
+  border-radius: 15px;
+  display: inline-block;
+}
+.button_c:hover {
+  color: #ffffff !important;
+  background: linear-gradient(45deg,#DBFDEC,#FFC2D4);
+  transition: all 0.4s ease 0s;
+}
 </style>

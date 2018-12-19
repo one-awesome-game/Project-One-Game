@@ -3,11 +3,13 @@
      <div class="container-fluid">
         <div class="row">
             <div class="col"> 
-                <img alt="pepparkakshus" src="../assets/pepparkakshus.jpg">
+              <div>
+                <img class="leaf" alt="leaf" src="../assets/red.png">
+              </div>
             </div>
             <div class="col">   
                 <Game />
-                <button @click="logout">Logga ut</button>
+                <button class="button_L" @click="logout">Log Out</button>
             </div>
         </div>
     </div>
@@ -37,13 +39,28 @@ export default {
 }
 </script>
 <style scoped>
-img{
- width: 200px;
-}
-button{
-  margin: 25px;
-}
 .col {
     
+}
+
+.leaf {
+  width: 100%;
+  z-index: -1;
+  margin-top: -60px;
+}
+.button_L {
+  color: #494949 !important;
+  text-transform: uppercase;
+  background: linear-gradient(45deg,#DBFDEC,#FFC2D4);
+  padding: 7px;
+  border: 4px solid linear-gradient(45deg,#FB7140,#FB9951) !important;
+  border-radius: 15px;
+  display: inline-block;
+  margin-top: 0px;
+}
+.button_L:hover {
+  color: #ffffff !important;
+  background: linear-gradient(45deg,#DBFDEC,#FFC2D4);
+  transition: all 0.2s ease 0s;
 }
 </style>

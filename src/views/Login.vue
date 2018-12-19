@@ -1,13 +1,13 @@
 <template>
-  <div class="login">
-      <h2>Logga in</h2>
-     <label for="email">E-Post: <input type="text" v-model="email" placeholder="exempel@onegame.se"></label><br>
-      <label for="password">Lösenord: <input type="password" v-model="password" placeholder="******" @keyup.enter="login"></label><br>
-      <button @click="login">Logga in</button><br>
-      <p>Behöver du ett konto? <router-link to="/sign-up"> Klicka här </router-link> </p><br><br>
-      <p>Eller logga in med Google <br>
-      <button @click="google" class="google">
-          <img src="../assets/google-logo.png" alt="Google logo"></button></p>
+    <div class="login">
+    <h2>Logga in</h2>
+    <label for="email">E-Post: <input type="text" v-model="email" placeholder="exempel@onegame.se"></label><br>
+    <label for="password">Lösenord: <input type="password" v-model="password" placeholder="******" @keyup.enter="login"></label><br>
+    <button @click="login">Logga in</button><br>
+    <p>Behöver du ett konto? <router-link to="/sign-up"> Klicka här </router-link> </p><br><br>
+    <p>Eller logga in med Google <br>
+    <button @click="google" class="google">
+        <img src="../assets/google-logo.png" alt="Google logo"></button></p>
     </div>
 </template>
 
@@ -46,6 +46,14 @@ export default {
 }
 </script>
 
+<style>
+body{    
+    height: 100%;
+    background: linear-gradient(45deg,#5CF0F8,#ECDDFE);
+    background-attachment: fixed;
+}
+</style>
+
 <style scoped>
 h2 {
     margin: 5% 0 3% 0%;
@@ -54,7 +62,7 @@ h2 {
   margin: 0 10%;
   padding: 1%;
   border-radius: 5px;
-  background-color: #cccccc;
+  background: linear-gradient(45deg,#97F7FB,#8D8AFC);
 }
 p{
     display: inline-block;
