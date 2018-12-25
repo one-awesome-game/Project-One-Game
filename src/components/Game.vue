@@ -398,10 +398,8 @@ img {
 }
 
 .history{
-    background-color: peachpuff;
   display: inline-block;
   padding: 0.5%;
-  border: 1px solid #cccccc;
 }
 
 
