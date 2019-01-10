@@ -3,11 +3,17 @@
      <transition name="fade"><router-view/></transition>
   </div>
 </template>
+<script>
+
+export default {
+  
+}
+</script>
 
 <style>
 * {
   box-sizing: border-box;
-  font-family: arial;
+  
 }
 p {
   font-size: 0.95em;
@@ -15,29 +21,16 @@ p {
 
     body{
         overflow: scroll;
-        background-color: lightgrey;
+        background-color: #28544b;
         max-width: 900px;
-        width: 90%;
+        width: 100%;
         margin: 0 auto;
-        padding: 5%;
     }
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   text-align: center;
-  color: #2c3e50;
 
-}
-#nav {
-  padding: 30px;
-}
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
 }
 
 .fade-enter-active, .fade-leave-active {
@@ -52,18 +45,7 @@ p {
 .fade-enter, .fade-leave-active {
  opacity: 0
 }
-.item5 {
-background-color: red;
-height: 175px;
-}
-.item6 {
-background-color: green;
-height: 175px;
-}
-.item7 {
-background-color: red;
-height: 175px;
-}
+
 
 /*- CSS Grid för hela projektet -*/
 
@@ -73,7 +55,10 @@ height: 175px;
 .grid-container {
   display: grid;
   grid-template-columns: 30% 40% 30%;
-  grid-gap: 10px;
+  border-radius: 10px;
+  padding: 2%;
+  margin: 4%;
+ 
 }
 .item1{
 grid-column: 1 / 4;
@@ -101,24 +86,15 @@ grid-column: 3 / 4;
 grid-column: 1 / 4;
 }
 
- .mobile {
-   display: none;
- }
   .img-responsive {
     display: inline-block;
   }
 @media (max-width: 721px){
-  .item1, .item2, .item3, .item4, .item5, .item6, .item7
+  .item1, .item2, .item3, .item4, 
   {
 grid-column: 1/4;
   }
 
-  .img-responsive {
-    display: none;
-  }
-  .mobile {
-   display: inline-block;
-  }
 } 
 
 </style>

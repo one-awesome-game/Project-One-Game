@@ -1,5 +1,6 @@
-
 <template>
+         
+<div class="container"> 
 <div>
 <ul class="social-nav model-0">
   <li><a href="https://twitter.com/mytweetbex" class="twitter"><i class="fa fa-twitter"></i></a></li>
@@ -10,100 +11,62 @@
 
 </ul>
 </div>
+  <br>
+    <div class="row">
+    
+      <div class="col s12 m8 offset-m2">
+        <div class="loginbox">
+          
+  <h3>Contact Us</h3>
+        <div class="input-field">
+        <form action="https://formspree.io/rongemattias@gmail.com" method="POST">
+       
+ <div class="input-field">
+<label class="black-text" for="email">Name</label>
+  <input type="text" name="name">
+  </div>
+
+ <div class="input-field">
+<label class="black-text" for="email">Email</label>
+  <input type="email" name="_replyto">
+  </div>
+<br>
+<h6> Write you message:</h6>
+<br>
+  <textarea rows="10" name="message"> </textarea>
+<br>
+<input type="submit" value="Send">
+
+<br>
+<br>
+
+<router-link to="/login">Login Page</router-link>
+</form>
+  </div>
+    </div>
+      </div>    
+        </div>  
+ </div>
+      
+
+
 </template>
 
 <script>
-export default{
 
-}
 
 </script>
 
 <style scoped>
-@media screen and (max-width: 915px){ /* iphone 5 */
-    .social-nav a {
-      display: inline-block;
-      float: left;
-      width: 35px;
-      height: 35px;
-      font-size: 21px;
-      color: #FFF;
-      text-decoration: none;
-      cursor: pointer;
-      text-align: center;
-      line-height: 34px;
-      background: #000;
-      position: relative;
-      transition: 0.5s;
-    }
-    .social-nav {
-      padding: 0;
-      list-style: none;
-      display: inline-block;
-      margin: 50px auto;
-    }
-    .social-nav li {
-      display: inline-block;
-    }
-    .model-0 {
-      position: absolute;
-      transition: 0.5s;
-      left: 0;
-      top: 600px;
-    }
-    .model-0 li {
-      float: none;
-      display: block;
-    }
-    .model-0 a:hover {
-      padding-left: 20px;
-      width: 56px;
+.loginbox{
+        display: table;
+        background: white;
+        padding: 5%;
+        border-radius: 10px;
+        margin: 7%;
+        width: 80%;
     }
 
-}
-
-@media screen and (min-width: 719px){ /* ipad */
-    .social-nav a {
-      display: inline-block;
-      float: left;
-      width: 38px;
-      height: 38px;
-      font-size: 23px;
-      color: #FFF;
-      text-decoration: none;
-      cursor: pointer;
-      text-align: center;
-      line-height: 38px;
-      background: #000;
-      position: relative;
-      transition: 0.5s;
-    }
-    .social-nav {
-      padding: 0;
-      list-style: none;
-      display: inline-block;
-      margin: 50px auto;
-    }
-    .social-nav li {
-      display: inline-block;
-    }
-    .model-0 {
-      position: absolute;
-      transition: 0.5s;
-      left: 0;
-      top: 470px;
-    }
-    .model-0 li {
-      float: none;
-      display: block;
-    }
-    .model-0 a:hover {
-      padding-left: 20px;
-      width: 55px;
-    }
-
-}
-@media screen and (min-width: 916px){ /* desktop */
     .social-nav a {
       display: inline-block;
       float: left;
@@ -142,7 +105,7 @@ export default{
       padding-left: 20px;
       width: 65px;
     }
-}
+
 .model-0 .twitter {
   background: #00ACED;
 }
@@ -160,4 +123,9 @@ export default{
 .model-0 .github {
   background: rgb(0, 0, 0);
 }
+
+#textarea1 {
+  height: 100px;
+}
+
 </style>

@@ -1,39 +1,55 @@
 <template>
+<div>
+    <p v-if="isLoggedIn"><span id="email" >You´re logged in as: {{currentUser}}</span></p><br>
   <div class="grid-container">
-
-
- 
- <div class="item1"><p v-if="isLoggedIn"><span id="email" class="email black-text">You´re logged in as:<br>{{currentUser}}</span></p>
- <h3>Hello and welcome to One Game!</h3>
-  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores illo voluptatem culpa veritatis. Quis illo adipisci animi, quo sequi, a omnis soluta vero possimus molestias, cum sunt optio tempora id!</p>
-  </div>
+    <div class="item1"> 
+        <h4>Welcome to One Game!</h4>
+        <p id="santatext">Hello, Santa here! The Grinch and Krampus are trying to steel Christmas again. Please help me to save it!! If you win against them in the game, they will leave and never come back, and then you have saved Christmas forever! Good luck!</p>
+        <img class="santa" src="../assets/Santa_Claus.png" alt="santa!">
+    </div>
 
     <div class="item2">
-      <h2>Rules of the game</h2>
-      <p>Here you can play game against Grinchen and Krampus, I will ask you a question that has a numerical answer,
-      try to guess it right! pst…I’m going to help you by telling you to go higher or lower after your guess!
-      You have 10 guesses by default, but you can make it easier (15 tries, wow!) or harder (only 5 tries or you are dead!) Enjoy!</p>
-  </div>
+        <img id="santa" src="../assets/Santa_Claus.png" alt="santa!">
+         <h5>Rules of the game</h5>
+         <p>You play against The Grinch and Krampus, I will ask you a question that has a numerical answer,
+         try to guess it right! Pst…I’m going to help you by telling you to go higher or lower after your guess!
+         You have 10 guesses by default, but you can make it easier (15 tries, wow!) or harder (only 5 tries or you are dead!) Enjoy!</p>
+    </div>
 
  
-  <div class="item3">
-      <router-link :to="{name:'game'}"><button class="button" >Game</button></router-link>
+    <div class="item3">
+          <router-link :to="{name:'game'}"><button class="button" >Game</button></router-link><br>
+          <p id="opp">Your Opponents:</p>
+        <div class="container">
+          <img class="grinch" src="../assets/grinch.png" alt="Grinch!">
+           <div class="middle">
+                <div class="text">The Grinch - The one who stole X-mas. Spends his days, watching documentary, so he knows his shit. Watch out!
+                </div> 
+            </div>
+        </div>
+        <div class="container">
+          <img class="krampus"  src="../assets/krampus.png" alt="Krampus!">
+          <div class="middle">
+              <div class="text">Krampus - The devil of X-mas. A tricky bastard, knows nothing about the questions, but is extremely lucky, be aware!
+              </div> 
+          </div>
+        </div>
   </div>
+      
   <div class="item4">
-
-    <h2>High Score!</h2>
-<ol>
-  <li>12sekunder</li>
-  <li>37sekunder</li>
-  <li>57sekunder</li>
-  </ol> 
+<h5>High Score</h5>
+    
+        <admin></admin>
+  
   </div>
   <div class="item5"></div>
   <div class="item6">
-  <button @click="logout">Logga ut</button> 
-  </div>
+    <button @click="logout">Log out</button> 
+  </div><br>
   <div class="item7"></div>
-  </div>
+  
+</div>
+</div>
 </template>
 
 <script>
@@ -53,7 +69,7 @@ export default {
       this.currentUser = firebase.auth().currentUser.email;
     }
   },
-   methods: {
+    methods: {
     logout: function(){
       firebase.auth().signOut().then(() => {
         this.$router.replace('login')
@@ -65,14 +81,128 @@ export default {
 </script>
 <style scoped>
 
-#email {
-  float: right;
-    position: absolute;
-  top: 8px;
-  right: 16px;
+.highScore{
+  list-style: none;
+}
+
+#opp{
+  padding: 0% 0% 5% 0%;
+}
+
+.container {
+  position: relative;
+  display: inline;
+}
+
+.grinch {
+  opacity: 1;
+  width: 45%;
+  height: 30%;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+
+.middle {
+  transition: .5s ease;
+  width: 100%;
+  opacity: 0;
+  position: absolute;
+  top: -700%;
+  left: 0%;
+  text-align: center;
 }
 
 
+
+.container:hover .middle {
+  opacity: 1;
+}
+
+.text {
+  background-color: #fff;
+  color: black;
+  font-weight:bolder;
+  opacity: 0.8;
+  padding: 15% 16%;
+  border-radius: 10px;
+  font-size: 0.75em;
+}
+.krampus {
+  width: 50%;
+}
+#santatext {
+  animation-duration: 2s;
+  animation-name: santaText;
+  font-size: 1em;
+  animation-fill-mode: both;
+}
+@keyframes santaText {
+  0% {
+    transform: scale(0.1);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+#santa {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 15%;
+  animation: santa1 10s;
+  animation-fill-mode: forwards;
+}
+@media screen and (max-width: 721px){
+@keyframes santa1 {
+  0%   {opacity: 0;}
+  50%  {opacity: 50;}
+  100% {opacity: 100;}
+    }
+@keyframes santa2 {
+  0%   {opacity: 0;}
+  100% {opacity: 0;}
+    }
+    .item1{
+        margin-bottom:-15%;
+    }
+}
+.santa{
+  width: 8%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  animation: santa2 10s;
+  animation-fill-mode: forwards;
+}
+@media screen and (min-width: 721px){
+@keyframes santa2 {
+  0%   {opacity: 0;}
+  50%  {opacity: 50;}
+  100% {opacity: 100;}
+    }
+@keyframes santa1 {
+  0%   {opacity: 0;}
+  100% {opacity: 0;}
+    }
+.item2{
+        margin-top:-20%;
+    }
+}
+.grid-container {
+  display: grid;
+  grid-template-columns: 30% 40% 30%;
+  background-color: #fff0db;
+  border-radius: 10px;
+  padding: 2%;
+  margin: 0% 2% 2% 2%;
+}
+#email {
+  float: right;
+  color: #f9f8eb;
+  padding-right: 3%;
+}
 /*BootstapjQuary-killer*/
 h2 {
   font-size: 2em;
@@ -125,9 +255,7 @@ button:active {
 }
 /*Bootstap/jQuary-killer*/
 
-img{
- width: 200px;
-}
+
 button{
   margin: 25px;
 }
@@ -189,5 +317,27 @@ inset 0 80px 80px -40px #dd4330, /* gradient */
       transition: 50ms linear;
 
       }
+
+@media (max-width: 721px){
+  .item1, .item2, .item3, .item4, .item5, .item6, .item7, .item8
+  {
+grid-column: 1/4;
+  }
+  .grinch, .krampus{
+  width: 20%;
+}
+h4{
+  font-size: 16px;
+  font-weight: bold;
+}
+h5{
+  font-size: 14px;
+  font-weight: bold;
+}
+#santa{
+  width: 10%;
+}
+} 
+
 
 </style>

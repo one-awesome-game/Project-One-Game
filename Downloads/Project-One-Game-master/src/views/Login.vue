@@ -1,37 +1,41 @@
 <template>
-  <div>
-    <div class="container">
+<div class="snow">
+    <img class="test" src="../assets/paket.jpg" alt="paket">
+<div class="wrapper">
+  
+ <div class="container">
     <div class="row">
       <div class="col s12 m8 offset-m2">
-        <div class="login card-panel black white-text center">
-          <h3>Login</h3>
-     
+        <div class="loginbox">
+          <h3>Enter One Game!</h3>
+     <p>Save Christmas!</p>
             <div class="input-field">
               <i class="material-icons prefix">email</i>
               <input type="email" id="email" v-model="email">
-              <label class="white-text" for="email">Email</label>
+              <label class="black-text" for="email">Email</label>
             </div>
             <div class="input-field">
               <i class="material-icons prefix">lock</i>
               <input type="password" id="password" v-model="password">
-              <label class="white-text" for="password">Password</label>
+              <label class="black-text" for="password">Password</label>
             </div>
-            <button v-on:click="login" class="btn btn-large btn-extended grey lighten-4 black-text">Login</button>
-          <br><p>Behöver du ett konto? <router-link to="/sign-up"> Klicka här </router-link> </p>
-          <p>Eller logga in med Google <br>
+            <button v-on:click="login">Log in</button>
+          <br><p>Create account? <router-link to="/sign-up"> Click here! </router-link> </p>
+          <p>Log in with Google? <br>
       <button @click="google" class="google">
           <img src="../assets/google-logo.png" alt="Google logo"></button></p>
+          <router-link to="/Contact"> Contact </router-link> 
           </div>
       </div>
     </div>
   </div>
+   </div> 
   </div>
     
 
 </template>
 
 <script>
-
 export default {
   name: 'login',
   data() {
@@ -55,7 +59,6 @@ export default {
       },
       google(){
           const provider = new firebase.auth.GoogleAuthProvider();
-
           firebase.auth().signInWithPopup(provider).then((result) => {
               this.$router.replace('home');
           }).catch((err) => {
@@ -67,26 +70,35 @@ export default {
 </script>
 
 <style scoped>
-h2 {
-    margin: 5% 0 3% 0%;
-}
+    h3 {
+        font-size: 2.5em;
+    }
 .login{
   margin: 0 10%;
   padding: 1%;
   border-radius: 5px;
-  background-color: #cccccc;
+  background-color: #fff;
+    
 }
+    img{
+        border-radius: 10px;
+    }
+.loginbox{
+        background: linear-gradient( rgba(255,255,255,0.1),rgba(255,255,255,0.9),rgba(255,255,255,0.9),rgba(255,255,255,0.1));
+        padding: 5%;
+        border-radius: 10px;
+        margin: 7%;
+    }
 p{
-    display: inline-block;
-    padding:0 5px 0 0;
-    font-size: 1em;
-
+    display: block;
+   
 }
 button, a {
 cursor: pointer;
 }
 .google{
-    width: 75px;
+    width: 45px;
+    height: 45px;
     background-color: white;
     padding: 10px;
     border-radius: 100%;
@@ -103,6 +115,273 @@ cursor: pointer;
 }
 input {
   padding: 5px;
-  margin: 5px;
+}
+.snow{
+  position: relative;
+  padding: 0px;
+  margin: 0px;
+  overflow: hidden;
+  height: 100vh;
+}
+.wrapper{
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  
+}
+span{
+  position: absolute;
+  left: 10px; /*snygga till snöns position lite //Jimmy*/
+  top: -10px;
+  border-radius: 50%;
+}
+
+
+.anim-2{
+  animation: animate 8s linear infinite;
+}
+.anim-3{
+  animation: animate 10s linear infinite;
+}
+.anim-4{
+  animation: animate 12s linear infinite;
+}
+.anim-5{
+  animation: animate 15s linear infinite;
+}
+.anim-6{
+  animation: animate 18s linear infinite;
+}
+.delaying{
+  animation-delay: 5s;
+}
+.delaying1{
+  animation-delay: 10s;
+}
+.delaying2{
+  animation-delay: 8s;
+}
+.width-1{
+  width: 4px;
+  height: 4px;
+}
+.width-2{
+  width: 6px;
+  height: 6px;
+}
+.width-3{
+  width: 8px;
+  height: 8px;
+}
+.bg-1{
+  background-color: rgba(255,255,255, 0.7);
+}
+.bg-2{
+  background-color: rgba(255,255,255, 0.5);
+}
+.bg-3{
+  background-color: rgba(255,255,255, 0.3);
+}
+.blur-1{
+  filter: blur(1px);
+}
+.blur-2{
+  filter: blur(2px);
+}
+.blur-3{
+  filter: blur(3px);
+}
+.blur-5{
+  filter: blur(3px);
+}
+@keyframes animate{
+  100%{
+    top: 105vh;
+  }
+}
+@keyframes shaking1{
+  25%, 30%{
+    left: 50%;
+  }
+  50%, 53%{
+    left: 25%;
+  }
+  75%, 78%{
+    left: 40%;
+  }
+  100%{
+    top: 105vh;
+  }
+}
+@keyframes shaking2{
+   25%, 28%{
+    left: 45%;
+  }
+  50%, 53%{
+    left: 75%;
+  }
+  75%, 78%{
+    left: 55%;
+  }
+  100%{
+    top: 125vh;
+  }
+}
+.left-1{
+  left: 1%;
+  top: -1px;
+}
+.left-2{
+  left: 2%;
+  top: -2px;
+}
+.left-3{
+  left: 3%;
+  top: -3px;
+}
+.left-4{
+  left: 4%;
+  top: -4px;
+}
+.left-5{
+  left: 5%;
+  top: -5px;
+}
+.left-6{
+  left: 6%;
+  top: -12vh;
+}
+.left-7{
+  left: 7%;
+  top: -50px;
+}
+.left-8{
+  left: 8%;
+  top: -40px;
+}
+.left-9{
+  left: 9%;
+  top: -78px;
+}
+
+
+.left-21{
+  left: 21%;
+  top: -65px;
+}
+.left-22{
+  left: 22%;
+  top: -78px;
+}
+.left-23{
+  left: 23%;
+  top: -95px;
+}
+.left-24{
+  left: 24%;
+  top: -23px;
+}
+.left-25{
+  left: 25%;
+  top: -18px;
+}
+.left-26{
+  left: 26%;
+  top: -75px;
+}
+.left-27{
+  left: 27%;
+  top: -65px;
+}
+.left-28{
+  left: 28%;
+  top: -99px;
+}
+.left-29{
+  left: 29%;
+  top: -23px;
+}
+.left-30{
+  left: 30%;
+  top: -75px;
+} 
+
+.left-41{
+  left: 41%;
+  top: -11px;
+}
+
+.left-43{
+  left: 43%;
+  top: -54px;
+}
+.left-44{
+  left: 44%;
+  top: -61px;
+}
+
+.left-46{
+  left: 46%;
+  top: -5px;
+}
+.left-47{
+  left: 47%;
+  top: -73px;
+}
+.left-48{
+  left: 48%;
+  top: -18px;
+}
+.left-49{
+  left: 49%;
+  top: -65px;
+}
+
+
+.left-90{
+  left: 90%;
+  top: -53px;
+}
+.left-91{
+  left: 91%;
+  top: -73px;
+}
+.left-92{
+  left: 92%;
+  top: -82px;
+}
+.left-93{
+  left: 93%;
+  top: -19px;
+}
+.left-94{
+  left: 94%;
+  top: -27px;
+}
+.left-95{
+  left: 95%;
+  top: -37px;
+}
+.left-96{
+  left: 96%;
+  top: -67px;
+}
+.left-97{
+  left: 97%;
+  top: -87px;
+}
+.left-98{
+  left: 98%;
+  top: -27px;
+}
+.left-99{
+  left: 99%;
+  top: -38px;
+}
+.left-100{
+  left: 100%;
+  top: -12px;
 }
 </style>
