@@ -61,7 +61,7 @@
   
       <form class="form-inline"  v-if="this.win">
         <router-link :to="{name:'home'}"> </router-link>
-        <highscore></highscore>
+        <highscore :numberOfGuessToSB="this.numberOfGuess"></highscore>
       </form>
 
         </div>
@@ -132,9 +132,19 @@
 
 <script>
 const quizData = "https://api.myjson.com/bins/1e3s5g";
+
+import Highscore from "@/components/Highscore.vue";
+
 export default {
+  components: {
+  name: 'highscore',
+  Highscore
+
+},
+
   data() {
     return {
+      numberOfGuessToSB: this.numberOfGuess,
       gameOver: false,
       easy: false,
       medium:false,
@@ -173,8 +183,8 @@ export default {
       krampus1: false,
       grinch1: false
     };
-  },
-
+  }, 
+ 
   created() {
     fetch(quizData)
       .then(res => res.json())
