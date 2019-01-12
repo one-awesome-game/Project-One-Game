@@ -53,7 +53,7 @@
            <p id="timeOut">{{ answer }}</p>
         </div>
         <div class="difficulty" v-show="!game">
-          <div>Choose difficulty:</div> <!-- ändrade så att @cliack gör allt sätter antal försök, bestämmer tiden och väljer animation för tidtagarur.-->
+          <div>Choose difficulty:</div> <!-- ändrade så att @cliack gör allt sätter antal försök, bestämmer tiden och väljer animation för tidtagarur + startar nu även spel, för att det kändes mest naturligt och vad man förväntade sig.-->
           <button class="button" @click="tries=15, diffTime=40, easy=!easy ,startGame(), game = !game" >Easy</button>
           <button class="button" @click="tries=10, diffTime=30, medium=!medium,startGame(), game = !game">Medium</button>
           <button class="button" @click="tries=5, diffTime=15, hard=!hard,startGame(),game = !game" >Hard</button>
@@ -61,29 +61,20 @@
   
       <form class="form-inline"  v-if="this.win">
         <router-link :to="{name:'home'}"> </router-link>
-<highscore></highscore>
+        <highscore></highscore>
       </form>
 
         </div>
 
     <div class="item2"></div>
     <div class="item3">
-      <div v-show="game">
-        <input
-          id="bootstrap-overrides"
-          v-model="userGuess"
-          type="number"
-          @keypress.enter="userInput"
-          @keydown="key"
-          min="0"
-          :disabled="inputClosed"
-          autocomplete="off"
-        > <!-- visas när game är sant -->
+      <div v-show="game"> <!-- autocomplete för att det inte ska komma upp någon dropdown med förslad -->
+        <input id="bootstrap-overrides" placeholder="Enter 0-99..." v-model="userGuess" type="number" min="0" max="99" @keypress.enter="userInput" @keydown="key" :disabled="inputClosed" autocomplete="off"> <!-- visas när game är sant -->
         <button @click="userInput" :disabled="inputBtnClosed">Guess</button>
         <button :disabled="!inputBtnClosed" v-show="inputBtnClosed" onclick="location.reload(true)">Play Again?</button>
         <div id="timer" v-show="!gameOver">
             
-<!-- tycker verkligen att v-if bör ha fungerar här, men icke, denna kod duger änsålänge -->
+<!-- för att få rätt animation på klockan, beroende på vilken svårighetsgrad man väljer -->
             
            <div v-show="easy" class="jmWatch">
               <div  class="jmTimerE">
@@ -123,8 +114,8 @@
 
     
     <div class="item7" v-show="game">
-      <p>Krampus: </p>
-      <div class="history" v-for="historK in historyKrampus" :key="historK">{{ historK }}</div>
+        <p>Krampus: </p>
+        <div class="history" v-for="historK in historyKrampus" :key="historK">{{ historK }}</div>
     </div>
     <div class="item8">
         <img class="grinch" v-if="grinch1" src="../assets/grinch.png" alt="Grinch!">
@@ -132,7 +123,7 @@
         <img class="krampus" v-if="krampus1" src="../assets/krampus.png" alt="Krampus!">
         <img id="kramp" v-if="kramp" src="../assets/krampus.png" alt="Krampus!">
         <router-link :to="{name:'home'}">
-         <button @click="resetTimer()">Home</button>
+        <button @click="resetTimer()">Home</button>
         </router-link>
     </div>
   </div>
@@ -241,10 +232,7 @@ export default {
         this.krampus1= true,
         this.grinch1= true
        },
-   /*  highscore: function() {
-      this.guestName.push(this.newNameText);
-      this.newNameText = "";
-    }, */
+
     startTimer: function() {
       this.timer = setInterval(() => this.countdown(), 1000);
     },
@@ -310,8 +298,8 @@ export default {
             this.inputBtnClosed = true;
             this.gameOver = true;
             this.timer = null;
-              this.grin=true;
-              this.grinch1= false;
+            this.grin=true;
+            this.grinch1= false;
 
           } else if (this.opponent2 == this.number) {
             this.krampus =
@@ -323,8 +311,8 @@ export default {
             this.inputBtnClosed = true;
             this.gameOver = true;
             this.timer = null;
-              this.kramp=true;
-              this.krampus1= false;
+            this.kramp=true;
+            this.krampus1= false;
 
           } else this.higher = "Wrong, guess higher!!";
           this.lower = "";
@@ -344,8 +332,8 @@ export default {
             this.inputClosed = true;
             this.inputBtnClosed = true;
             this.gameOver = true;
-              this.grin=true;
-              this.grinch1= false;
+            this.grin=true;
+            this.grinch1= false;
 
           } else if (this.opponent2 == this.number) {
             this.krampus =
@@ -357,8 +345,8 @@ export default {
             this.inputBtnClosed = true;
             this.gameOver = true;
             this.timer = null;
-              this.kramp=true;
-              this.krampus1= false;
+            this.kramp=true;
+            this.krampus1= false;
 
           } else this.lower = "Wrong, guess lower!!";
           this.answer = "";
@@ -394,6 +382,8 @@ export default {
     }
   }
 };
+
+
 </script>
 
 <style scoped>
@@ -499,6 +489,7 @@ h2 {
   100% {opacity: 0;}
     }
 }
+}
 #kramp{
   display: block;
   margin-left: auto;
@@ -508,7 +499,7 @@ h2 {
   animation: krampusWin 10s;
   animation-fill-mode: forwards;
     }
-}
+
 @media screen and (min-width: 770px){
 .krampus {
   width: 23%;
@@ -554,7 +545,7 @@ h2 {
   color: #decdc3;
   background-color: #990000;
   height: 100px;
-  margin: 0% 2% 2% 2%;  /* Ta bort om ej behövs */
+  margin: 0% 2% 2% 2%;
   display: table;
 }
 .item6 {
@@ -661,7 +652,7 @@ img {
   height:50%;
 }
 .jmTickerE {
-  animation: jm-cycle 40s 1 linear; /*en för 40 och en för 15*/
+  animation: jm-cycle 40s 1 linear; /*css för easy 40*/
   background-color:#b7d035;
   bottom:50%;
   left:50%;
@@ -671,8 +662,8 @@ img {
   z-index:1;
 }
 .jmMaskE {
-  animation: jm-cycle-jmMask 40s 1 linear; /*en för 40 och en för 15*/
-  animation: jm-cycle-jmMask 40s 10 linear; /*en för 40 och en för 15*/
+  animation: jm-cycle-jmMask 40s 1 linear;
+  animation: jm-cycle-jmMask 40s 10 linear; 
   border-top-left-radius: 50px;
   background-color:#00703c;
   bottom:50%;
@@ -705,7 +696,7 @@ img {
   height:50%;
 }
 .jmTickerM {
-  animation: jm-cycle 30s 1 linear; /*en för 40 och en för 15*/
+  animation: jm-cycle 30s 1 linear; /*css för medium 30*/
   background-color:#b7d035;
   bottom:50%;
   left:50%;
@@ -715,8 +706,8 @@ img {
   z-index:1;
 }
 .jmMaskM {
-  animation: jm-cycle-jmMask 30s 1 linear; /*en för 40 och en för 15*/
-  animation: jm-cycle-jmMask 30s 10 linear; /*en för 40 och en för 15*/
+  animation: jm-cycle-jmMask 30s 1 linear;
+  animation: jm-cycle-jmMask 30s 10 linear;
   border-top-left-radius: 50px;
   background-color:#00703c;
   bottom:50%;
@@ -748,7 +739,7 @@ img {
   height:50%;
 }
 .jmTickerH {
-  animation: jm-cycle 15s 1 linear; /*en för 40 och en för 15*/
+  animation: jm-cycle 15s 1 linear; /*css för hard 15*/
   background-color:#b7d035;
   bottom:50%;
   left:50%;
@@ -758,8 +749,8 @@ img {
   z-index:1;
 }
 .jmMaskH {
-  animation: jm-cycle-jmMask 15s 1 linear; /*en för 40 och en för 15*/
-  animation: jm-cycle-jmMask 15s 10 linear; /*en för 40 och en för 15*/
+  animation: jm-cycle-jmMask 15s 1 linear; 
+  animation: jm-cycle-jmMask 15s 10 linear;
   border-top-left-radius: 50px;
   background-color:#00703c;
   bottom:50%;
@@ -879,7 +870,6 @@ img {
 
 .jmWatch {
   background-image:url('../assets/timer.png');
-  /* mix-blend-mode:multiply; för att få bilden att smällt in mer i backgrunden */
   background-repeat: no-repeat;
   background-size: 120px;
   background-position: 0 0;
@@ -1016,9 +1006,6 @@ img {
 .difficulty {
   width: 200px;
   margin: 0 auto;
-/*  margin-left: 130%;
-  text-align: center;
-  display: inline-block;*/
 }
 .img-responsive.mobile {
   display: none;
