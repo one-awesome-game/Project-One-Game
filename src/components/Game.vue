@@ -69,7 +69,7 @@
     <div class="item2"></div>
     <div class="item3">
       <div v-show="game"> <!-- autocomplete för att det inte ska komma upp någon dropdown med förslad -->
-        <input id="bootstrap-overrides" placeholder="Enter 0-99..." v-model="userGuess" type="number" min="0" max="99" @keypress.enter="userInput" @keydown="key" :disabled="inputClosed" autocomplete="off"> <!-- visas när game är sant -->
+        <input id="bootstrap-overrides" placeholder="Enter 0-99..." v-model="userGuess" type="number" min="0" max="99" onKeyDown="if(this.value.length==2) this.value = this.value.slice(0, - 1);" @keypress.enter="userInput" @keydown="key" :disabled="inputClosed" autocomplete="off"> <!-- visas när game är sant -->
         <button @click="userInput" :disabled="inputBtnClosed">Guess</button>
         <button :disabled="!inputBtnClosed" v-show="inputBtnClosed" onclick="location.reload(true)">Play Again?</button>
         <div id="timer" v-show="!gameOver">
